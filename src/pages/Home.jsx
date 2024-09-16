@@ -5,10 +5,7 @@ import './home.css'
 const Home = () => {
   return (
     <DefaultLayout>
-      <div className="container">
-        <h1>This is homepage</h1>
-
-      </div>
+      <h1>This is a test</h1>
 
     </DefaultLayout>
   )
