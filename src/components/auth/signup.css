@@ -1,8 +1,10 @@
-.container{
+.signup-container{
     display: flex;
     flex-direction: column;
     width: 100vw;
-    margin: auto;
+    height: 100%;
+    margin: 0;
+    padding: 0;
     background: #fff;
     padding-bottom: 30px;
     background: url(../../assets/background.jpg);
@@ -60,7 +62,7 @@
 
 .forgot-password{
     padding-left: 62px;
-    margin-left: 260px;
+    margin-left: 340px;
     margin-top: 27px;
     color: black;
     font-size: 18px;

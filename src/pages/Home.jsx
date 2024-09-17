@@ -5,7 +5,6 @@ import './home.css'
 const Home = () => {
   return (
     <DefaultLayout>
-      <h1>This is a test</h1>
 
     </DefaultLayout>
   )

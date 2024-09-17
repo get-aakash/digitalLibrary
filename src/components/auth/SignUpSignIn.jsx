@@ -8,7 +8,7 @@ import background_image from '../../assets/background.jpg'
 const SignUpSignIn = () => {
   const [action, setAction] = useState("Sign In")
   return (
-    <div className='container'>
+    <div className='signup-container'>
       <div className="header">
         <div className="text">{action}</div>
         <div className="underline"></div>
