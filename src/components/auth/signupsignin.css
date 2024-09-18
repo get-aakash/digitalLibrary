@@ -62,7 +62,6 @@
 
 .forgot-password{
     padding-left: 62px;
-    margin-left: 340px;
     margin-top: 27px;
     color: black;
     font-size: 18px;
@@ -95,3 +94,33 @@
     background: #eaeaea;
     color: #676767;
 }
+
+@media screen and (min-width: 1024px) {
+    .signup-container{
+        height: 110vh;
+    }
+    .forgot-password{
+        margin-left: 660px;
+    }
+    
+    
+}  
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .signup-container{
+        height: 105vh;
+    }
+    
+    
+  }
+
+  @media screen and (max-device-width: 768px) {
+    .signup-container{
+        height: 100vh;
+        width: 100%;
+        padding: 10px;
+    }
+   
+  }
+
+  
