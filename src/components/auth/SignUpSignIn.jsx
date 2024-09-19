@@ -4,15 +4,22 @@ import user_icon from '../../assets/person.png'
 import email_icon from '../../assets/email.png'
 import password_icon from '../../assets/password.png'
 import background_image from '../../assets/background.jpg'
+import { Button } from 'react-bootstrap'
 
 const SignUpSignIn = () => {
   const [action, setAction] = useState("Sign In")
+
+  function handleOnSubmit(){
+    console.log("Handle form submit")
+  }
   return (
     <div className='signup-container'>
+      
       <div className="header">
         <div className="text">{action}</div>
         <div className="underline"></div>
       </div>
+      <form action="" onSubmit={handleOnSubmit}>
       <div className="inputs">
         {action === "Sign In"?<div></div>:<div className="input">
           <img src={user_icon} alt="" />
@@ -27,7 +34,12 @@ const SignUpSignIn = () => {
           <img src={password_icon} alt="" />
           <input type="password"  placeholder='Password'/>
         </div>
+        <Button type="submit" variant="light">{action}</Button>
       </div>
+      
+        
+      </form>
+      
       {action==="Sign Up"?<div></div>:<div className="forgot-password">Forgot Password? <span>Click here</span></div>}
       
       <div className="submit-container">
