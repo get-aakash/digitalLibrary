@@ -8,9 +8,16 @@ import { Button } from 'react-bootstrap'
 
 const SignUpSignIn = () => {
   const [action, setAction] = useState("Sign In")
+  const [formData, setFormData] = useState({})
 
-  function handleOnSubmit(){
-    console.log("Handle form submit")
+  function handleOnSubmit(e){
+    e.preventDefault()
+    console.log(formData)
+  }
+  function handleOnChange(e){
+    const{name, value} = e.target
+    setFormData( {...formData, [name]:value})
+    
   }
   return (
     <div className='signup-container'>
@@ -23,16 +30,16 @@ const SignUpSignIn = () => {
       <div className="inputs">
         {action === "Sign In"?<div></div>:<div className="input">
           <img src={user_icon} alt="" />
-          <input type="text" placeholder='Name' />
+          <input type="text" name='name' placeholder='Name' onChange={handleOnChange} />
         </div>}
         
         <div className="input">
           <img src={email_icon} alt="" />
-          <input type="email" placeholder='Email'/>
+          <input type="email" name='email' placeholder='Email' onChange={handleOnChange}/>
         </div>
         <div className="input">
           <img src={password_icon} alt="" />
-          <input type="password"  placeholder='Password'/>
+          <input type="password" name='password'  placeholder='Password' onChange={handleOnChange}/>
         </div>
         <Button type="submit" variant="light">{action}</Button>
       </div>
