@@ -8,6 +8,7 @@ import { Button } from 'react-bootstrap'
 import { createUserWithEmailAndPassword } from "firebase/auth"
 import { auth } from '../../services/firebase'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const SignUpSignIn = () => {
   const [action, setAction] = useState("Sign In")
@@ -21,17 +22,17 @@ const SignUpSignIn = () => {
   }
   function handleOnSubmit(e) {
     e.preventDefault()
-    const user = createUserWithEmailAndPassword(auth, formData.email, formData.password).then((userCredential) => {
+    createUserWithEmailAndPassword(auth, formData.email, formData.password).then((userCredential) => {
       const user = userCredential.user
-      console.log(user)
-      navigate('/')
+      if (user?.uid) {
+        toast.success("User created successfully")
+        navigate('/')
 
+      }
     })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        toast.error(error.message)
       });
-    console.log(user)
   }
 
   return (
