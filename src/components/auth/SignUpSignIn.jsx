@@ -20,19 +20,22 @@ const SignUpSignIn = () => {
     setFormData({ ...formData, [name]: value })
 
   }
-  function handleOnSubmit(e) {
+  async function handleOnSubmit (e) {
     e.preventDefault()
-    createUserWithEmailAndPassword(auth, formData.email, formData.password).then((userCredential) => {
-      const user = userCredential.user
-      if (user?.uid) {
-        toast.success("User created successfully")
-        navigate('/')
-
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Your passwords do not match");
+      return;
+    }
+    try {
+      const user = await createUserWithEmailAndPassword(auth, formData.email, formData.password)
+      if(user?.uid){
+        toast.success("User created successfully!!")
+        navigate("/")
       }
-    })
-      .catch((error) => {
-        toast.error(error.message)
-      });
+      
+    } catch (error) {
+      toast.error(error.message)
+    }
   }
 
   return (
@@ -56,6 +59,10 @@ const SignUpSignIn = () => {
           <div className="input">
             <img src={password_icon} alt="" />
             <input type="password" name='password' placeholder='Password' onChange={handleOnChange} />
+          </div>
+          <div className="input">
+            <img src={password_icon} alt="" />
+            <input type="password" name='confirmPassword' placeholder='Confirm Password' onChange={handleOnChange} />
           </div>
           <Button type="submit" variant="light">{action}</Button>
         </div>
