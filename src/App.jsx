@@ -5,14 +5,16 @@ import './App.css';
 import SignUpSignIn from './components/auth/SignUpSignIn';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Dashboard from './pages/Dashboard';
 
 const App = () => {
   return (
-
+    
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signupsignin" element={<SignUpSignIn />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>

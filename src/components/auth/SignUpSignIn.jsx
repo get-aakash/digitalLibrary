@@ -9,11 +9,14 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fire
 import { auth } from '../../services/firebase'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
+import { addUser } from '../../store/userSlice'
 
 const SignUpSignIn = () => {
   const [action, setAction] = useState("Sign In")
   const [formData, setFormData] = useState({})
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   function handleOnChange(e) {
     const { name, value } = e.target
@@ -28,7 +31,7 @@ const SignUpSignIn = () => {
         return;
       }
       try {
-        const user = await createUserWithEmailAndPassword(auth, formData.email, formData.password)
+        const {user} = await createUserWithEmailAndPassword(auth, formData.email, formData.password)
         if(user?.uid){
           toast.success("User created successfully!!")
           navigate("/")
@@ -44,7 +47,7 @@ const SignUpSignIn = () => {
       
       try {
        const {user} = await signInWithEmailAndPassword(auth, formData.email, formData.password)
-       console.log(user.uid)
+       dispatch(addUser(user))
        if(user?.uid){
         console.log("helli")
         toast.success("User created successfully!!")
