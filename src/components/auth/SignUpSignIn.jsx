@@ -32,7 +32,9 @@ const SignUpSignIn = () => {
       }
       try {
         const {user} = await createUserWithEmailAndPassword(auth, formData.email, formData.password)
+        
         if(user?.uid){
+          dispatch(addUser(user))
           toast.success("User created successfully!!")
           navigate("/")
         }
@@ -47,8 +49,9 @@ const SignUpSignIn = () => {
       
       try {
        const {user} = await signInWithEmailAndPassword(auth, formData.email, formData.password)
-       dispatch(addUser(user))
+       
        if(user?.uid){
+        dispatch(addUser(user))
         console.log("helli")
         toast.success("User created successfully!!")
         navigate("/")
