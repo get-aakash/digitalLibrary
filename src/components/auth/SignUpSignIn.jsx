@@ -6,11 +6,12 @@ import password_icon from '../../assets/password.png'
 import background_image from '../../assets/background.jpg'
 import { Button } from 'react-bootstrap'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
-import { auth } from '../../services/firebase'
+import { auth, db } from '../../services/firebase'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { addUser } from '../../store/userSlice'
+import { addDoc, doc, setDoc } from 'firebase/firestore'
 
 const SignUpSignIn = () => {
   const [action, setAction] = useState("Sign In")
@@ -32,9 +33,17 @@ const SignUpSignIn = () => {
       }
       try {
         const {user} = await createUserWithEmailAndPassword(auth, formData.email, formData.password)
-        
+        const {email, password} = formData
+        console.log(user.uid,email, password)
+
+        const obj = {
+          email,password
+        }
+
+        await setDoc(doc(db,'users', user.uid),obj)
+        dispatch(addUser({...obj, uid:user.uid}))
         if(user?.uid){
-          dispatch(addUser(user))
+          
           toast.success("User created successfully!!")
           navigate("/")
         }
