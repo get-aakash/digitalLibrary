@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './signupsignin.css'
 import user_icon from '../../assets/person.png'
 import email_icon from '../../assets/email.png'
@@ -9,7 +9,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fire
 import { auth, db } from '../../services/firebase'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addUser } from '../../store/userSlice'
 import { addDoc, doc, setDoc } from 'firebase/firestore'
 
@@ -18,6 +18,11 @@ const SignUpSignIn = () => {
   const [formData, setFormData] = useState({})
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const {user} = useSelector(state=>state.user)
+
+  useEffect(()=>{
+    user?.uid && navigate("/dashboard")
+  },[user?.uid, navigate])
 
   function handleOnChange(e) {
     const { name, value } = e.target
@@ -41,11 +46,11 @@ const SignUpSignIn = () => {
         }
 
         await setDoc(doc(db,'users', user.uid),obj)
-        dispatch(addUser({...obj, uid:user.uid}))
+        dispatch(addUser({...obj, uid:user.uid, role:"user"}))
         if(user?.uid){
           
           toast.success("User created successfully!!")
-          navigate("/")
+          navigate("/dashboard")
         }
         
       } catch (error) {
@@ -58,12 +63,15 @@ const SignUpSignIn = () => {
       
       try {
        const {user} = await signInWithEmailAndPassword(auth, formData.email, formData.password)
-       
+       const {uid, displayName, email} = user
+       const obj = {
+        uid, displayName, email
+       }
        if(user?.uid){
-        dispatch(addUser(user))
+        dispatch(addUser(obj))
         console.log("helli")
         toast.success("User created successfully!!")
-        navigate("/")
+        navigate("/dashboard")
       }
         
       } catch (error) {

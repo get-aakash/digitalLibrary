@@ -13,15 +13,11 @@ const Header = () => {
   console.log(user.uid)
 
   async function handleOnLogout(){
-    try {
-      const user = await signOut(auth)
-      console.log(user)
-      toast.success("User Logged out!!")
-      navigate("/signupsignin")
-      
-    } catch (error) {
-      toast.error(error.message)
-    }
+   signOut(auth)
+   .then(()=>{
+    toast.success("Logout successfully")
+   })
+   .catch((error)=>toast.error(error.message))
   }
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
