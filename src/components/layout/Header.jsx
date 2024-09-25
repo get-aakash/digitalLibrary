@@ -3,7 +3,7 @@ import React from 'react'
 import {  Container, Nav, Navbar } from 'react-bootstrap'
 import { auth } from '../../services/firebase'
 import { toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const Header = () => {
@@ -27,9 +27,9 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">{
             }
-            <Nav.Link href="#home">SignIn</Nav.Link>
-            <Nav.Link href="#link">SignUp</Nav.Link> 
-            <Nav.Link onClick={handleOnLogout}>SignOut</Nav.Link> 
+            <Link href="#home">SignIn</Link>
+            <Link href="#link">SignUp</Link> 
+            <Link onClick={handleOnLogout}>SignOut</Link> 
           </Nav>
         </Navbar.Collapse>
       </Container>
