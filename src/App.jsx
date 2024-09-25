@@ -16,9 +16,9 @@ const App = () => {
   const dispatch = useDispatch()
   onAuthStateChanged(auth,(user)=>{
     const obj = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName
+      uid: user?.uid,
+      email: user?.email,
+      displayName: user?.displayName
     }
     dispatch(addUser(obj))
   })

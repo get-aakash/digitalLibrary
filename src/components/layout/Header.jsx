@@ -25,11 +25,11 @@ const Header = () => {
         <Navbar.Brand href="#home">Digital Library</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">{
-            }
-            <Link href="#home">SignIn</Link>
-            <Link href="#link">SignUp</Link> 
-            <Link onClick={handleOnLogout}>SignOut</Link> 
+          <Nav className="ms-auto">
+            {user?.uid ? <Link onClick={handleOnLogout}>SignOut</Link> : <><Link href="#home">SignIn</Link>
+            <Link href="#link">SignUp</Link></>  }
+            
+            
           </Nav>
         </Navbar.Collapse>
       </Container>
