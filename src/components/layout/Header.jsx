@@ -26,7 +26,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            {user?.uid ? <Link onClick={handleOnLogout}>SignOut</Link> : <><Link to="/signupsignin">SignIn</Link>
+            {user?.uid ? <Link onClick={handleOnLogout}>SignOut</Link> : <><Link to="/signupsignin"><i className="fa-solid fa-right-to-bracket"></i></Link>
               <Link to="/signupsignin">SignUp</Link></>}
 
 

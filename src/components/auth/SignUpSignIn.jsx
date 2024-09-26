@@ -70,7 +70,7 @@ const SignUpSignIn = () => {
        if(user?.uid){
         dispatch(addUser(obj))
         console.log("helli")
-        toast.success("User created successfully!!")
+        toast.success("Logging in to the dashboard!!")
         navigate("/dashboard")
       }
         

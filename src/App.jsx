@@ -12,6 +12,8 @@ import { useDispatch } from 'react-redux';
 import { addUser } from './store/userSlice';
 import { auth } from './services/firebase';
 
+import 'font-awesome/css/font-awesome.min.css';
+
 const App = () => {
   const dispatch = useDispatch()
   onAuthStateChanged(auth,(user)=>{
