@@ -25,9 +25,9 @@ const Header = () => {
         <Navbar.Brand href="#home">Digital Library</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            {user?.uid ? <Link onClick={handleOnLogout}>SignOut</Link> : <><Link to="/signupsignin"><i className="fa-solid fa-right-to-bracket"></i></Link>
-              <Link to="/signupsignin">SignUp</Link></>}
+          <Nav className="ms-auto gap-3 fs-3" >
+            {user?.uid ?<><Link><i title='Dashboard' class="fa-solid fa-book"></i></Link><Link onClick={handleOnLogout}><i title='SignOut' className="fa-solid fa-right-to-bracket"></i></Link></>  : <><Link to="/signupsignin"><i title='SignIn' class="fa-solid fa-user"></i></Link>
+              <Link to="/signupsignin"><i title='SignUp' class="fa-solid fa-user-plus"></i></Link></>}
 
 
           </Nav>
