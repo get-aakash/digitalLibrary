@@ -1,0 +1,28 @@
+.addBtn {
+   display: flex;
+   justify-content: space-between;
+   margin: 10px;
+}
+
+.input-field{
+    border-radius: 30px;
+    background:#dcdce9 ;
+}
+
+.input-box{
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    outline: 0;
+    
+}
+
+.search-btn{
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    padding: 16px 50px;
+    background: #102C57;
+    color: #F7E7DC;
+}

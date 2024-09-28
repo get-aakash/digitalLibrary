@@ -109,7 +109,7 @@ const SignUpSignIn = () => {
             <input type="password" name='confirmPassword' placeholder='Confirm Password' onChange={handleOnChange} />
           </div>:<div></div>}
          
-          <Button type="submit" variant="light">{action}</Button>
+          <Button className='submitBtn' type="submit" variant="light">{action}</Button>
         </div>
 
 

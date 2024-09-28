@@ -13,6 +13,7 @@ import { addUser } from './store/userSlice';
 import { auth } from './services/firebase';
 
 import 'font-awesome/css/font-awesome.min.css';
+import BookForm from './components/books/BookForm';
 
 const App = () => {
   const dispatch = useDispatch()
@@ -40,6 +41,11 @@ const App = () => {
             <Dashboard />
           </PrivateRoute>
         } />
+        <Route path="/addBook" element={
+          
+            <BookForm />
+          
+        }/>
       </Routes>
       <ToastContainer />
     </BrowserRouter>
