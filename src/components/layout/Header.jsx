@@ -26,8 +26,8 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto gap-3 fs-3" >
-            {user?.uid ?<><Link><i title='Dashboard' class="fa-solid fa-book"></i></Link><Link onClick={handleOnLogout}><i title='SignOut' className="fa-solid fa-right-to-bracket"></i></Link></>  : <><Link to="/signupsignin"><i title='SignIn' class="fa-solid fa-user"></i></Link>
-              <Link to="/signupsignin"><i title='SignUp' class="fa-solid fa-user-plus"></i></Link></>}
+            {user?.uid ?<><Link><i title='Dashboard' className="fa-solid fa-book"></i></Link><Link onClick={handleOnLogout}><i title='SignOut' className="fa-solid fa-right-to-bracket"></i></Link></>  : <><Link to="/signupsignin"><i title='SignIn' className="fa-solid fa-user"></i></Link>
+              <Link to="/signupsignin"><i title='SignUp' className="fa-solid fa-user-plus"></i></Link></>}
 
 
           </Nav>

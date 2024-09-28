@@ -5,7 +5,7 @@ const initialState = {
     books:{}
 }
 const bookSlice = createSlice({
-    name:book,
+    name:"books",
     initialState,
     reducers:{
         addBook(state,{payload}){
