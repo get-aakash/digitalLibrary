@@ -10,7 +10,6 @@ const Header = () => {
 
   const navigate = useNavigate()
   const { user } = useSelector(state => state.user)
-  console.log(user.uid)
 
   async function handleOnLogout() {
     signOut(auth)

@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import DefaultLayout from '../components/layout/DefaultLayout'
 import './home.css'
 import { Button } from 'react-bootstrap'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { getBookAction } from '../components/books/bookAction'
+import BookCard from '../components/books/BookCard'
 const Home = () => {
+  const [display, setDisplay] = useState([])
+  const {books} = useSelector(state=>state.books)
+  const dispatch = useDispatch()
+  console.log(display)
+  useEffect(()=>{
+    dispatch(getBookAction())
+    setDisplay(books)
+  },[dispatch])
   return (
     <DefaultLayout>
       <div className="wrapper">
@@ -15,9 +25,15 @@ const Home = () => {
             <input className='input-box' type="text" placeholder='Search Here..' />
             <button className='search-btn'>Search</button>
 
+           
+
           </div>
+          
 
         </div>
+        <div className="bookCard">
+             <BookCard display= {display} />
+            </div>
 
 
       </div>

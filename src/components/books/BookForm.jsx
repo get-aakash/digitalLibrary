@@ -56,6 +56,7 @@ const BookForm = () => {
     e.preventDefault()
     console.log(formData)
     dispatch(addBookAction(formData))
+    navigate("/")
   }
   return (
     <DefaultLayout>

@@ -1,3 +1,7 @@
+
+.wrapper{
+    margin: 10px;
+}
 .addBtn {
    display: flex;
    justify-content: space-between;
@@ -25,4 +29,9 @@
     padding: 16px 50px;
     background: #102C57;
     color: #F7E7DC;
+}
+
+.bookCard{
+    margin: 20px;
+    padding: 10px;
 }
