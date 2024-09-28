@@ -5,6 +5,7 @@ import CustomInput from '../CustomInput/CustomInput'
 import { useDispatch } from 'react-redux'
 import { addBook } from '../../store/bookSlice'
 import { useNavigate } from 'react-router-dom'
+import { addBookAction } from './bookAction'
 
 const BookForm = () => {
 
@@ -41,7 +42,8 @@ const BookForm = () => {
     type: "text",
     as: 'textarea',
     placeholder: "Book Summary",
-    rows: '5'
+    rows: '5',
+    name: "summary"
   }
   
 
@@ -53,8 +55,7 @@ const BookForm = () => {
   const handleOnSubmit = (e)=>{
     e.preventDefault()
     console.log(formData)
-    dispatch(addBook(formData))
-    navigate("/")
+    dispatch(addBookAction(formData))
   }
   return (
     <DefaultLayout>
