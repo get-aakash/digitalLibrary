@@ -3,7 +3,6 @@ import DefaultLayout from '../layout/DefaultLayout'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import CustomInput from '../CustomInput/CustomInput'
 import { useDispatch } from 'react-redux'
-import { addBook } from '../../store/bookSlice'
 import { useNavigate } from 'react-router-dom'
 import { addBookAction } from './bookAction'
 
@@ -54,9 +53,9 @@ const BookForm = () => {
   }
   const handleOnSubmit = (e)=>{
     e.preventDefault()
-    console.log(formData)
-    dispatch(addBookAction(formData))
-    navigate("/")
+   dispatch(addBookAction(formData))
+   navigate("/")
+    
   }
   return (
     <DefaultLayout>

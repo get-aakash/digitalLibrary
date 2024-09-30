@@ -9,11 +9,13 @@ const Home = () => {
   const [display, setDisplay] = useState([])
   const {books} = useSelector(state=>state.books)
   const dispatch = useDispatch()
-  console.log(display)
   useEffect(()=>{
-    dispatch(getBookAction())
-    setDisplay(books)
-  },[dispatch])
+    !display.length && dispatch(getBookAction())
+   setDisplay(books)
+
+ },[ dispatch, books])
+ 
+ 
   return (
     <DefaultLayout>
       <div className="wrapper">
