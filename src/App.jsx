@@ -14,6 +14,7 @@ import { auth } from './services/firebase';
 
 import 'font-awesome/css/font-awesome.min.css';
 import BookForm from './components/books/BookForm';
+import BookLanding from './components/books/BookLanding';
 
 const App = () => {
   const dispatch = useDispatch()
@@ -30,12 +31,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signupsignin" element={
-          
-            <SignUpSignIn />
-
-         
-          } />
+        <Route path="/signupsignin" element={<SignUpSignIn />} />
+        <Route path='book/:bookId' element={<BookLanding />} />
         <Route path="/dashboard" element={
           <PrivateRoute>
             <Dashboard />

@@ -40,3 +40,8 @@
     overflow: hidden;
     white-space: nowrap;
 }
+.bookCard:hover{
+    cursor: pointer;
+    
+
+}
