@@ -42,7 +42,8 @@ const SignUpSignIn = () => {
         console.log(user.uid,email, password)
 
         const obj = {
-          email,password
+          email,password,
+          role: "user"
         }
 
         await setDoc(doc(db,'users', user.uid),obj)
@@ -63,13 +64,13 @@ const SignUpSignIn = () => {
       
       try {
        const {user} = await signInWithEmailAndPassword(auth, formData.email, formData.password)
-       const {uid, displayName, email} = user
+       const {uid, displayName, email,role} = user
        const obj = {
-        uid, displayName, email
+        uid, displayName, email, role
        }
        if(user?.uid){
         dispatch(addUser(obj))
-        console.log("helli")
+        console.log(obj)
         toast.success("Logging in to the dashboard!!")
         navigate("/dashboard")
       }
