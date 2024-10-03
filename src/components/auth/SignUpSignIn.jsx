@@ -12,6 +12,7 @@ import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser } from '../../store/userSlice'
 import { addDoc, doc, setDoc } from 'firebase/firestore'
+import { autoLogin } from '../user/userAction'
 
 const SignUpSignIn = () => {
   const [action, setAction] = useState("Sign In")
@@ -64,13 +65,10 @@ const SignUpSignIn = () => {
       
       try {
        const {user} = await signInWithEmailAndPassword(auth, formData.email, formData.password)
-       const {uid, displayName, email,role} = user
-       const obj = {
-        uid, displayName, email, role
-       }
+      
+       const {uid} = user
        if(user?.uid){
-        dispatch(addUser(obj))
-        console.log(obj)
+        dispatch(autoLogin(uid))
         toast.success("Logging in to the dashboard!!")
         navigate("/dashboard")
       }

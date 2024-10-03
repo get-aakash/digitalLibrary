@@ -23,7 +23,7 @@ const Home = () => {
       <div className="wrapper">
         <h1 className='text-center mt-2 text-primary bg-light'>Welcome to Digital Library</h1>
         <div className="addBtn">
-          {user?.uid && <a href='/addBook'><Button na className='px-4 py-2 hover:bg-blue-100' variant="outline-primary">+ADD BOOKS</Button></a>}
+          {user?.role==="user" && <a href='/addBook'><Button na className='px-4 py-2 hover:bg-blue-100' variant="outline-primary">+ADD BOOKS</Button></a>}
 
           <div className="input-field">
             <input className='input-box' type="text" placeholder='Search Here..' />
